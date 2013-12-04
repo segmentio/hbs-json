@@ -1,0 +1,9 @@
+{
+  "name": "hbs-json",
+  "version": "0.0.1",
+  "description": "Handlebars helper for JSON.stringify.",
+  "keywords": [
+    "handlebars",
+    "json"
+  ]
+}
