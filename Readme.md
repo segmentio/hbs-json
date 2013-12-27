@@ -3,7 +3,7 @@
   Handlebars helper for `JSON.stringify`.
 
 ## Installation
-  
+
     $ npm install hbs-json
 
 ## Example
@@ -21,15 +21,15 @@ app.get('/', function (req, res, next) {
 
 ```html
  <script>
-    window.user = {{ json user }}
+    window.user = {{{ json user }}}
   </script>
 ```
 
 ## API
 
-### json
-  
-  A handlebars helper for `JSON.stringify`.
+### json obj [escaped]
+
+  A handlebars helper for `JSON.stringify`. By default, will escape html characters so that you may use handlebars to render values to the template.
 
 
 ## License

@@ -5,5 +5,12 @@
   "keywords": [
     "handlebars",
     "json"
-  ]
+  ],
+  "dependencies": {
+    "escape-html": "~1.0.1",
+    "traverse": "~0.6.6"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.2"
+  }
 }
