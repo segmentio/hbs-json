@@ -6,6 +6,10 @@
     "handlebars",
     "json"
   ],
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/segmentio/hbs-json.git"
+  },
   "dependencies": {
     "escape-html": "~1.0.1",
     "traverse": "~0.6.6"
