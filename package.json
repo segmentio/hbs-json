@@ -1,14 +1,14 @@
 {
   "name": "hbs-json",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Handlebars helper for JSON.stringify.",
   "keywords": [
     "handlebars",
     "json"
   ],
-  "repository" : {
-    "type" : "git",
-    "url" : "http://github.com/segmentio/hbs-json.git"
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/segmentio/hbs-json.git"
   },
   "dependencies": {
     "escape-html": "~1.0.1",
