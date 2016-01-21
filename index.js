@@ -1,5 +1,8 @@
 var escape = require('escape-html');
-var traverse = require('traverse');
+
+var stringifyEscape = function(key, value) {
+  return typeof value === 'string' ? escape(value) : value;
+};
 
 /**
  * Expose `jsonHelper`.
@@ -12,27 +15,13 @@ module.exports = jsonHelper;
  * Stringify json.
  *
  * @param {Object} json
- * @param {Boolean} escape
+ * @param {Boolean} escape Warning: Has nothing to do with handlebars double or triple brackets. Pass the arg.
  * @return {String}
  */
 
 function jsonHelper (json, escape) {
   if (!json) return 'null';
-  if (escape === undefined) escape = true;
-  if (escape) json = escapeHtml(json);
-  return JSON.stringify(json);
-}
-
-
-/**
- * Recursively escape any HTML found in nested objects
- *
- * @param {Object} obj
- * @return {Object}
- */
-
-function escapeHtml (obj) {
-  return traverse(obj).forEach(function (val) {
-    if (typeof val === 'string') this.update(escape(val));
-  });
+  if (typeof escape !== 'boolean') escape = true; // last arg is normally an options object
+  var escaper = escape ? stringifyEscape : undefined;
+  return JSON.stringify(json, escaper);
 }
