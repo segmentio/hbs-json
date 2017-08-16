@@ -2,6 +2,9 @@
   "name": "hbs-json",
   "version": "0.1.1",
   "description": "Handlebars helper for JSON.stringify.",
+  "scripts": {
+    "test": "mocha"
+  },
   "keywords": [
     "handlebars",
     "json"
@@ -11,10 +14,9 @@
     "url": "http://github.com/segmentio/hbs-json.git"
   },
   "dependencies": {
-    "escape-html": "~1.0.1",
-    "traverse": "~0.6.6"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "mocha": "~1.16.2"
+    "mocha": "^3.5.0"
   }
 }
