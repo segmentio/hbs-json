@@ -3,7 +3,10 @@
 const _ = require('lodash');
 
 function encodeEntities(result, value, key) {
-  if (typeof value === 'string') {
+  if (!value) {
+    result[key] = value;
+    return;
+  } else if (typeof value === 'string') {
     result[key] = _.escape(value);
     return;
   } else if (typeof value === 'object') {
