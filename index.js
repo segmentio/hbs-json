@@ -1,38 +1,28 @@
-var escape = require('escape-html');
-var traverse = require('traverse');
+'use strict';
 
-/**
- * Expose `jsonHelper`.
- */
+const _ = require('lodash');
 
-module.exports = jsonHelper;
+function encodeEntities(result, value, key) {
+  if (!value) {
+    result[key] = value;
+    return;
+  } else if (typeof value === 'string') {
+    value = value.replace(/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g, '');
+    result[key] = _.escape(value);
+    return;
+  } else if (typeof value === 'object') {
+    result[key] = _.transform(value, encodeEntities);
+    return;
+  }
 
+  result[key] = value;
+}
 
-/**
- * Stringify json.
- *
- * @param {Object} json
- * @param {Boolean} escape
- * @return {String}
- */
-
-function jsonHelper (json, escape) {
+function jsonHelper(json, escape) {
   if (!json) return 'null';
   if (escape === undefined) escape = true;
-  if (escape) json = escapeHtml(json);
+  if (escape) json = _.transform(json, encodeEntities);
   return JSON.stringify(json);
 }
 
-
-/**
- * Recursively escape any HTML found in nested objects
- *
- * @param {Object} obj
- * @return {Object}
- */
-
-function escapeHtml (obj) {
-  return traverse(obj).forEach(function (val) {
-    if (typeof val === 'string') this.update(escape(val));
-  });
-}
+module.exports = jsonHelper;
